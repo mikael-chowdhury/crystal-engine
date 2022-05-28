@@ -1,10 +1,48 @@
+import pygame
+
+from client.managers.SceneManager import SceneManager
+
 class Game:
-    def __init__(self) -> None:
+    def __init__(self, screensize) -> None:
         self.entities = []
         self.scenes = []
         self.managers = []
+
+        self.running = True
+
+        self.background_fill_colour = (0,0,0)
         
-        pass
+        pygame.init()
+
+        self.screen = pygame.display.set_mode(screensize)
+
+        self.load_managers()
         
-    def loop(self):
-        pass
+    def loop(self, args=[]):
+        events = pygame.event.get()
+        pressed_keys = pygame.key.get_pressed()
+
+        if self.background_fill_colour is not None:
+            self.screen.fill(self.background_fill_colour)
+        
+        for loopable in self.entities + self.scenes + self.managers:
+            if loopable is not None:
+                loopable.loop(self.screen, *args)
+
+        for event in events:
+            if event.type == pygame.QUIT:
+                self.running = False
+
+        return events, pressed_keys
+
+    def load_managers(self):
+        SceneManager(self)
+
+    def load_manager(self, manager):
+        manager()
+
+    def unload_manager(self, manager):
+        manager.unload()
+
+    def end_loop(self, args=[]):
+        pygame.display.update()
