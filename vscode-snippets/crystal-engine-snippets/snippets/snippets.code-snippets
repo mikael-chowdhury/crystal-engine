@@ -1,0 +1,15 @@
+{
+  "Create Manager": {
+    "prefix": "cm",
+    "body": [
+      "from crystal_engine.client.Manager import Manager",
+      "",
+      "class ${TM_FILENAME_BASE}(Manager):",
+      "   def __init__(self, game):",
+      "       super().__init__(self, game)",
+      "",
+      "   def loop(self, screen, *args):",
+      "       super().loop(screen, *args)"
+    ]
+  }
+}

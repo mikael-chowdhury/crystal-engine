@@ -1,0 +1,22 @@
+{
+  "name": "crystal-engine-snippets",
+  "displayName": "crystal-engine-snippets",
+  "description": "code snippets to make developing with crystal-engine easier",
+  "author": "mikaelchowdhury",
+  "publisher": "mikaelchowdhury",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
