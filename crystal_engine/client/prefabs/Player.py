@@ -1,10 +1,8 @@
 import random
 import uuid
 import pygame
-from crystal_engine.client.util.Animation import Animation
 
 from crystal_engine.client.util.Loopable import Loopable
-from crystal_engine.client.util.ResourceLocation import ResourceLocation
 
 class RawPlayer(Loopable):
     def __init__(self):

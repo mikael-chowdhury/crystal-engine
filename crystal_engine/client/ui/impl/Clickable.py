@@ -28,4 +28,4 @@ class Clickable(UIElement):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.mouse_hovering():
                     if self.on_click is not None:
-                        self.on_click()
+                        self.on_click(screen, events, keys, *args)
