@@ -16,6 +16,7 @@ class NetworkManager(Manager):
         self.network_id = -1
 
         self.connections = []
+        self.variables = {}
 
         setattr(self, "GameNetworkingObject", GameNetworkingObject())
 
@@ -33,6 +34,9 @@ class NetworkManager(Manager):
         try:
             if self.connected_to_server:
                 self.client.send(pickle.dumps(self.GameNetworkingObject))
-                self.connections = pickle.loads(self.client.recv(1024))
+                data = pickle.loads(self.client.recv(1024))
+                self.connections = data["connections"]
+                self.variables = data["variables"]
+                
         except OSError as e:
             str(e)
