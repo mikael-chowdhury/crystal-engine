@@ -33,10 +33,16 @@ class Game:
 
         self.load_managers()
 
+        self.clock = pygame.time.Clock()
+
+        self.dt = -1
+
     def close(self):
         self.running = False
         
     def loop(self, args=[]):
+        self.dt = self.clock.tick()
+
         events = pygame.event.get()
         pressed_keys = pygame.key.get_pressed()
 
