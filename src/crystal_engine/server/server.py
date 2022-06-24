@@ -26,11 +26,11 @@ class Server:
                 try:
                     data = pickle.loads(data)
 
-                    self.connections[currentPlayer] = data["player"]
+                    self.connections[currentPlayer] = data.player
 
                     for key, value in data:
                         if key != "player":
-                            self.variables[key] = value
+                            setattr(self.variables, key, value)
 
                     conn.sendall({ "connections": pickle.dumps(self.connections), "variables": self.variables })
 
