@@ -13,6 +13,8 @@ class InputBox(Clickable):
 
         self.input_text = ""
 
+        self.resctricted_keys = [pygame.K_BACKSPACE, pygame.K_RETURN, pygame.K_ESCAPE, pygame.K_TAB, pygame.K_CAPSLOCK, pygame.K_LCTRL, pygame.K_RCTRL]
+
         InputBox.InputBoxes.append(self)
 
     def activate(self):
@@ -39,7 +41,7 @@ class InputBox(Clickable):
                     if event.key == pygame.K_BACKSPACE and len(self.input_text) > 0:
                         self.input_text = self.input_text[:-1]
                     else:
-                        if not event.key == pygame.K_BACKSPACE or pygame.K_RETURN or pygame.K_ESCAPE or pygame.K_TAB or pygame.K_CAPSLOCK or pygame.K_LCTRL or pygame.K_RCTRL:
+                        if not event.key in self.resctricted_keys:
                             self.input_text += event.unicode
             
         self.text = self.input_text if len(self.input_text) > 0 else self.placeholder
