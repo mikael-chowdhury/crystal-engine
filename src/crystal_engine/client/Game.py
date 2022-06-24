@@ -4,7 +4,7 @@ import pygame
 from crystal_engine.client.managers.NetworkManager import NetworkManager
 from crystal_engine.client.managers.SceneManager import SceneManager
 from crystal_engine.client.managers.UIManager import UIManager
-from src.crystal_engine.client.ConfigurationManager import ConfigurationManager
+from crystal_engine.client.ConfigurationManager import ConfigurationManager
 
 class Game:
     def __init__(self, screensize) -> None:
