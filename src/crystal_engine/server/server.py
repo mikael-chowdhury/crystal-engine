@@ -26,9 +26,8 @@ class Server:
                 try:
                     data = pickle.loads(data)
 
-                    print(dir(data))
-
-                    self.connections[currentPlayer] = data.player
+                    if hasattr(data, "player"):
+                        self.connections[currentPlayer] = data.player
 
                     for key, value in data:
                         if key != "player":
