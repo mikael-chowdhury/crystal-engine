@@ -27,12 +27,12 @@ class Player(RawPlayer):
 
         parent.entities.append(self)
 
-    def movement(self, keys):
+    def movement(self, keys, game):
         if keys[pygame.K_a]:
-            self.x -= 1
+            self.x -= 1 * game.dt
 
         if keys[pygame.K_d]:
-            self.x += 1
+            self.x += 1 * game.dt
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, pygame.Rect(self.x, self.y, self.w, self.h))
