@@ -4,6 +4,7 @@ import pygame
 from crystal_engine.client.managers.NetworkManager import NetworkManager
 from crystal_engine.client.managers.SceneManager import SceneManager
 from crystal_engine.client.managers.UIManager import UIManager
+from src.crystal_engine.client.ConfigurationManager import ConfigurationManager
 
 class Game:
     def __init__(self, screensize) -> None:
@@ -18,6 +19,8 @@ class Game:
         pygame.init()
 
         self.screen = pygame.display.set_mode(screensize)
+
+        ConfigurationManager.set("screensize", screensize)
 
         self.frames_played = 0
 
