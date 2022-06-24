@@ -29,7 +29,7 @@ class Server:
                     if hasattr(data, "player"):
                         self.connections[currentPlayer] = data.player
 
-                    for key, value in zip(data.keys(), data.values()):
+                    for key, value in {key:value for key, value in data.__dict__.items() if not key.startswith('__') and not callable(key)}:
                         if key != "player":
                             setattr(self.variables, key, value)
 
