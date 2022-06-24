@@ -23,6 +23,9 @@ class UIElement(Loopable):
 
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
 
+        self.center_x = self.rect.centerx
+        self.center_y = self.rect.centery
+
         if self.text != "":
             if self.is_sys_font:
                 self.font = pygame.font.SysFont(self.text_font, self.font_size)
@@ -68,10 +71,15 @@ class UIElement(Loopable):
     def loop(self, screen, *args):
         super().loop(screen, *args)
 
+        self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
+
+        self.rect.centerx = self.center_x
+        self.rect.centery = self.center_y
+
         if self.background_image is not None:
             screen.blit(self.background_image, (self.x, self.y))
 
-        else:
+        elif self.background_color is not None:
             pygame.draw.rect(screen, self.background_color, self.rect)
 
 
