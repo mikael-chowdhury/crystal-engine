@@ -1,3 +1,4 @@
+import time
 import pygame
 
 from crystal_engine.client.managers.NetworkManager import NetworkManager
@@ -12,11 +13,20 @@ class Game:
 
         self.running = True
 
-        self.background_fill_colour = (0,0,0)
+        self.background_fill_colour = None
         
         pygame.init()
 
         self.screen = pygame.display.set_mode(screensize)
+
+        self.frames_played = 0
+
+        self.start_time = time.time()
+        self.time_now = time.time()
+
+        self.frames_per_second = -1
+
+        self.frames_per_second_reset_time = 0.6
 
         self.load_managers()
         
@@ -50,3 +60,8 @@ class Game:
 
     def end_loop(self, args=[]):
         pygame.display.update()
+
+        self.frames_played += 1
+        self.time_now = time.time()
+
+        self.frames_per_second = self.frames_played / self.time_now - self.start_time

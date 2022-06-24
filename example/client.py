@@ -1,11 +1,11 @@
-import crystal_engine.client as client
-from crystal_engine.client.prefabs.Player import Player
+from ..src.crystal_engine.client.prefabs.Player import Player
+from ..src.crystal_engine import client
+
 from scenes.GameScene import GameScene
 
 from scenes.StartMenu import StartMenu 
 
 game = client.Game((800, 800))
-
 
 start_menu = StartMenu()
 game_scene = GameScene()
