@@ -14,11 +14,11 @@ class Scene(Loopable):
     def add_to_loop(self, func):
         self.loop_stack.append(func)
 
-    def loop(self, screen, *args):
-        super().loop(self, screen, *args)
+    def loop(self, screen, keys, events, game, *args):
+        super().loop(self, screen, keys, events, *args)
 
         if self.background is not None:
             screen.fill(self.background)
 
         for loopable in self.entities + self.ui + self.loop_stack:
-            loopable.loop(screen, *args)
+            loopable.loop(screen, keys, events, game, *args)
