@@ -32,6 +32,9 @@ class Game:
         self.frames_per_second_reset_time = 0.6
 
         self.load_managers()
+
+    def close(self):
+        self.running = False
         
     def loop(self, args=[]):
         events = pygame.event.get()
