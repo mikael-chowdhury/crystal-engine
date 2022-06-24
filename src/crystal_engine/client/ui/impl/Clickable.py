@@ -10,22 +10,6 @@ class Clickable(UIElement):
     def set_on_click_listener(self, on_click):
         self.on_click = on_click
 
-    def mouse_hovering(self):
-        mouse = pygame.mouse.get_pos()
-
-        sx = self.rect.x
-        sy = self.rect.y
-        sw = self.rect.w
-        sh = self.rect.h
-
-        x = mouse[0]
-        y = mouse[1]
-
-        if x >= sx and x <= sx + sw and y >= sy and y <= sy + sh:
-            return True
-        else:
-            return False
-
     def loop(self, screen, events, keys, *args):
         super().loop(screen, *args)
 

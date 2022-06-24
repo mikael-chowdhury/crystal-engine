@@ -21,6 +21,8 @@ class UIElement(Loopable):
         self.center_text = center_text
         self.text_center_rect = None
 
+        self.background_color_hovering = self.background_color
+
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
 
         self.center_x = self.rect.centerx
@@ -73,6 +75,22 @@ class UIElement(Loopable):
         self.h = h
         self.update_rect()
 
+    def mouse_hovering(self):
+        mouse = pygame.mouse.get_pos()
+
+        sx = self.rect.x
+        sy = self.rect.y
+        sw = self.rect.w
+        sh = self.rect.h
+
+        x = mouse[0]
+        y = mouse[1]
+
+        if x >= sx and x <= sx + sw and y >= sy and y <= sy + sh:
+            return True
+        else:
+            return False
+
     def loop(self, screen, *args):
         super().loop(screen, *args)
 
@@ -84,8 +102,13 @@ class UIElement(Loopable):
         if self.background_image is not None:
             screen.blit(self.background_image, (self.x, self.y))
 
-        elif self.background_color is not None:
-            pygame.draw.rect(screen, self.background_color, self.rect)
+        elif self.mouse_hovering():
+            if self.background_color:
+                pygame.draw.rect(screen, self.background_color, self.rect)
+        else:
+            if self.background_color_hovering:
+                pygame.draw.rect(screen, self.background_color_hovering, self.rect)
+
 
         if self.text != "":
             screen.blit(self.text_surf, (self.text_center_rect.x, self.text_center_rect.y) if self.center_text and self.text_center_rect is not None else (self.x, self.y))
