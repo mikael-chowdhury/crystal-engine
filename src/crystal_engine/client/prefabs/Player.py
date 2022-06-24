@@ -18,6 +18,8 @@ class Player(RawPlayer):
         self.w = 100
         self.h = 100
 
+        self.speed = 0.5
+
         self.uuid = uuid.uuid4()
 
         self.color = (random.randrange(0, 100), random.randrange(0, 100), random.randrange(0, 100))
@@ -29,10 +31,10 @@ class Player(RawPlayer):
 
     def movement(self, keys, game):
         if keys[pygame.K_a]:
-            self.x -= 1 * game.dt
+            self.x -= self.speed * game.dt
 
         if keys[pygame.K_d]:
-            self.x += 1 * game.dt
+            self.x += self.speed * game.dt
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, pygame.Rect(self.x, self.y, self.w, self.h))
