@@ -33,7 +33,7 @@ class Server:
                         if key != "player":
                             setattr(self.variables, key, value)
 
-                    conn.sendall({ "connections": pickle.dumps(self.connections), "variables": pickle.dumps(self.variables) })
+                    conn.sendall(pickle.dumps({ "connections": pickle.dumps(self.connections), "variables": pickle.dumps(self.variables) }))
 
                 except EOFError as e:
                     str(e)
