@@ -29,7 +29,7 @@ class Server:
                     if hasattr(data, "player"):
                         self.connections[currentPlayer] = data.player
 
-                    for key, value in data:
+                    for key, value in dict(data):
                         if key != "player":
                             setattr(self.variables, key, value)
 
