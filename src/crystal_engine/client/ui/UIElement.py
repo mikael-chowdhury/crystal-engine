@@ -51,6 +51,8 @@ class UIElement(Loopable):
         self.rect.centerx = self.center_x
         self.rect.centery = self.center_y
 
+        self.update_text_surf()
+
     def set_text(self, text):
         self.text = text
         self.text_surf = self.font.render(self.text, True, self.text_color)
