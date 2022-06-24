@@ -48,6 +48,9 @@ class UIElement(Loopable):
     def update_rect(self):
         self.rect = pygame.Rect(self.x, self.y, self.w, self.h)
 
+        self.rect.centerx = self.center_x
+        self.rect.centery = self.center_y
+
     def set_text(self, text):
         self.text = text
         self.text_surf = self.font.render(self.text, True, self.text_color)
