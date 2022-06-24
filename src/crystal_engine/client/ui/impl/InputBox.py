@@ -36,7 +36,10 @@ class InputBox(Clickable):
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_BACKSPACE and len(self.input_text) > 0:
-                    self.text = self.text[:-1]
+                    self.input_text = self.input_text[:-1]
+                else:
+                    if not event.key == pygame.K_RETURN or pygame.K_ESCAPE or pygame.K_TAB or pygame.K_CAPSLOCK or pygame.K_LCTRL or pygame.K_RCTRL:
+                        self.input_text += event.unicode
         
         self.text = self.input_text if len(self.input_text) > 0 else self.placeholder
 
