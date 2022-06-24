@@ -26,6 +26,8 @@ class Server:
                 try:
                     data = pickle.loads(data)
 
+                    print(dir(data))
+
                     self.connections[currentPlayer] = data.player
 
                     for key, value in data:
