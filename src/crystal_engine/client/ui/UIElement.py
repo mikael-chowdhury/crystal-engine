@@ -102,7 +102,7 @@ class UIElement(Loopable):
         if self.background_image is not None:
             screen.blit(self.background_image, (self.x, self.y))
 
-        elif self.mouse_hovering():
+        elif not self.mouse_hovering():
             if self.background_color:
                 pygame.draw.rect(screen, self.background_color, self.rect)
         else:
