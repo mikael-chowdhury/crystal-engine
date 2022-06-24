@@ -9,6 +9,8 @@ class Server:
         self.host = None
 
         self.connections = []
+        self.variables = {}
+        
         self.connection_number = 0
 
     def threaded_client(self, conn, currentPlayer, first_join):
@@ -24,11 +26,12 @@ class Server:
                 try:
                     data = pickle.loads(data)
 
-                    print(currentPlayer)
+                    self.connections[currentPlayer] = data["player"]
 
-                    self.connections[currentPlayer] = data
+                    for key, value in data["variables"]:
+                        self.variables[key] = value
 
-                    conn.sendall(pickle.dumps(self.connections))
+                    conn.sendall({ "connections": pickle.dumps(self.connections), "variables": self.variables })
 
                 except EOFError as e:
                     str(e)
