@@ -87,6 +87,5 @@ class UIElement(Loopable):
         elif self.background_color is not None:
             pygame.draw.rect(screen, self.background_color, self.rect)
 
-
         if self.text != "":
             screen.blit(self.text_surf, (self.text_center_rect.x, self.text_center_rect.y) if self.center_text and self.text_center_rect is not None else (self.x, self.y))

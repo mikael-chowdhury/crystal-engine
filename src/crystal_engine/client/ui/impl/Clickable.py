@@ -13,10 +13,15 @@ class Clickable(UIElement):
     def mouse_hovering(self):
         mouse = pygame.mouse.get_pos()
 
+        sx = self.rect.x
+        sy = self.rect.y
+        sw = self.rect.w
+        sh = self.rect.h
+
         x = mouse[0]
         y = mouse[1]
 
-        if x >= self.x and x <=self.x + self.w and y >= self.y and y <= self.y + self.h:
+        if x >= sx and x <= sx + sw and y >= sy and y <= sy + sh:
             return True
         else:
             return False
