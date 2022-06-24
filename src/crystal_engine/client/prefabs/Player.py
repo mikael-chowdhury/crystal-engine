@@ -41,7 +41,7 @@ class Player(RawPlayer):
         game.NetworkManager.GameNetworkingObject.set_field("player", self)
 
     def loop(self, screen, events, keys, game, *args):
-        self.movement(keys)
+        self.movement(keys, game)
         self.update(game)
 
     @staticmethod
